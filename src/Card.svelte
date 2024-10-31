@@ -35,7 +35,9 @@
 	import img_back from '$lib/assets/card_images/card_back.png';
 
 	let card: HTMLDivElement;
-	let card_container: HTMLButtonElement;
+	let card_front_element: HTMLDivElement;
+	let card_back_element: HTMLDivElement;
+	let card_container_element: HTMLButtonElement;
 
 	/**
 	 * Props interface for the Card component.
@@ -74,6 +76,12 @@
 				animate(card, {
 					rotateY: 0
 				});
+				animate(card_front_element, {
+					transform: 'translateZ(-2px)' // support for Android/mobile
+				});
+				animate(card_back_element, {
+					transform: 'translateZ(2px)' // support for Android/mobile
+				});
 				break;
 			case 'face-up':
 				animate(card, {
@@ -101,14 +109,14 @@
 		class={'card_container transition-duration-1000 transition-all' +
 			(visualState === 'matched' ? ' opacity-50' : '')}
 		onclick={handleClick}
-		bind:this={card_container}
+		bind:this={card_container_element}
 		disabled={!clickable}
 	>
 		<div class={'card ' + ' rounded-lg shadow-lg'} bind:this={card}>
 			<div class="card_front overflow-hidden rounded-lg">
-				<img src={card_front} alt="front" class="h-4/5 w-4/5" />
+				<img src={card_front} alt="front" class="h-4/5 w-4/5" bind:this={card_front_element} />
 			</div>
-			<div class="card_back overflow-hidden rounded-lg">
+			<div class="card_back overflow-hidden rounded-lg" bind:this={card_back_element}>
 				<img src={img_back} alt="back" class="h-3/4 w-3/4" />
 			</div>
 		</div>
@@ -126,6 +134,8 @@
 		height: 100%;
 		position: relative;
 		transform-style: preserve-3d;
+		/* Support for iOS/Safari */
+		-webkit-transform-style: preserve-3d;
 	}
 	.card_front,
 	.card_back {
@@ -133,6 +143,8 @@
 		height: 100%;
 		width: 100%;
 		backface-visibility: hidden;
+		/* Support for iOS/Safari */
+		-webkit-backface-visibility: hidden;
 		background-color: white;
 		/* image should be 50% and centered */
 		display: flex;
@@ -141,5 +153,7 @@
 	}
 	.card_front {
 		transform: rotateY(180deg);
+		/* Support for iOS/Safari */
+		-webkit-transform: rotateY(180deg);
 	}
 </style>
