@@ -3,11 +3,27 @@ interface Card {
 	readonly image_path: string;
 }
 
-const cards: Card[] = [
+export const easy_card_set: Card[] = [
 	{ id: 1, image_path: '/src/lib/assets/card_images/1.png' },
 	{ id: 2, image_path: '/src/lib/assets/card_images/2.png' },
 	{ id: 3, image_path: '/src/lib/assets/card_images/3.png' },
 	{ id: 4, image_path: '/src/lib/assets/card_images/4.png' }
+];
+
+export const medium_card_set: Card[] = [
+	...easy_card_set,
+	{ id: 5, image_path: '/src/lib/assets/card_images/5.png' },
+	{ id: 6, image_path: '/src/lib/assets/card_images/6.png' },
+	{ id: 7, image_path: '/src/lib/assets/card_images/7.png' },
+	{ id: 8, image_path: '/src/lib/assets/card_images/8.png' }
+];
+
+export const hard_card_set: Card[] = [
+	...medium_card_set,
+	{ id: 9, image_path: '/src/lib/assets/card_images/9.png' },
+	{ id: 10, image_path: '/src/lib/assets/card_images/10.png' },
+	{ id: 11, image_path: '/src/lib/assets/card_images/11.png' },
+	{ id: 12, image_path: '/src/lib/assets/card_images/12.png' }
 ];
 
 interface CardInstance {
@@ -25,7 +41,17 @@ interface GameState {
 	readonly second_choice_position: number | null;
 }
 
-export function createInitialGameState(): GameState {
+/**
+ * Creates the initial game state for the memory card game.
+ *
+ * This function duplicates the card set, shuffles the cards, and initializes
+ * each card instance with its position and match status. It then returns the
+ * initial game state including the shuffled cards, turn count, match count,
+ * game finished status, and positions of the first and second choices.
+ *
+ * @returns {GameState} The initial game state.
+ */
+export function createInitialGameState(cards: Card[] = easy_card_set): GameState {
 	const duplicatedCards = [...cards, ...cards];
 	const shuffledCards = duplicatedCards.sort(() => Math.random() - 0.5);
 
@@ -127,6 +153,9 @@ export function checkPairs(gameState: GameState): GameState {
 	};
 }
 
+/***
+ * TEST CASES
+ ***/
 if (import.meta.vitest) {
 	const { it, expect } = import.meta.vitest;
 	it('creates a new game state with the correct number of cards and valid number of pairs', () => {
