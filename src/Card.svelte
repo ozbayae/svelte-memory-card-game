@@ -32,11 +32,10 @@
 
 <script lang="ts">
 	import { animate } from 'motion';
+	import img_back from '$lib/assets/card_images/card_back.png';
 
 	let card: HTMLDivElement;
 	let card_container: HTMLButtonElement;
-
-	const img_back = '/src/lib/assets/card_images/card_back.png';
 
 	/**
 	 * Props interface for the Card component.

@@ -1,3 +1,16 @@
+import img_1 from '$lib/assets/card_images/1.png';
+import img_2 from '$lib/assets/card_images/2.png';
+import img_3 from '$lib/assets/card_images/3.png';
+import img_4 from '$lib/assets/card_images/4.png';
+import img_5 from '$lib/assets/card_images/5.png';
+import img_6 from '$lib/assets/card_images/6.png';
+import img_7 from '$lib/assets/card_images/7.png';
+import img_8 from '$lib/assets/card_images/8.png';
+import img_9 from '$lib/assets/card_images/9.png';
+import img_10 from '$lib/assets/card_images/10.png';
+import img_11 from '$lib/assets/card_images/11.png';
+import img_12 from '$lib/assets/card_images/12.png';
+
 interface Card {
 	readonly id: number;
 	readonly image_path: string;
@@ -19,26 +32,26 @@ interface GameState {
 }
 
 export const easy_card_set: Card[] = [
-	{ id: 1, image_path: '/src/lib/assets/card_images/1.png' },
-	{ id: 2, image_path: '/src/lib/assets/card_images/2.png' },
-	{ id: 3, image_path: '/src/lib/assets/card_images/3.png' },
-	{ id: 4, image_path: '/src/lib/assets/card_images/4.png' }
+	{ id: 1, image_path: img_1 },
+	{ id: 2, image_path: img_2 },
+	{ id: 3, image_path: img_3 },
+	{ id: 4, image_path: img_4 }
 ];
 
 export const medium_card_set: Card[] = [
 	...easy_card_set,
-	{ id: 5, image_path: '/src/lib/assets/card_images/5.png' },
-	{ id: 6, image_path: '/src/lib/assets/card_images/6.png' },
-	{ id: 7, image_path: '/src/lib/assets/card_images/7.png' },
-	{ id: 8, image_path: '/src/lib/assets/card_images/8.png' }
+	{ id: 5, image_path: img_5 },
+	{ id: 6, image_path: img_6 },
+	{ id: 7, image_path: img_7 },
+	{ id: 8, image_path: img_8 }
 ];
 
 export const hard_card_set: Card[] = [
 	...medium_card_set,
-	{ id: 9, image_path: '/src/lib/assets/card_images/9.png' },
-	{ id: 10, image_path: '/src/lib/assets/card_images/10.png' },
-	{ id: 11, image_path: '/src/lib/assets/card_images/11.png' },
-	{ id: 12, image_path: '/src/lib/assets/card_images/12.png' }
+	{ id: 9, image_path: img_9 },
+	{ id: 10, image_path: img_10 },
+	{ id: 11, image_path: img_11 },
+	{ id: 12, image_path: img_12 }
 ];
 
 /**
