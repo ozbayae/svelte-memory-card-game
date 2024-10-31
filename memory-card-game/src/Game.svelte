@@ -1,8 +1,11 @@
 <script lang="ts">
 	import Card from './Card.svelte';
+	import ResponsiveGrid from './ResponsiveGrid.svelte';
 	import type { VisualState } from './Card.svelte';
 	import { createInitialGameState, pickCard, checkPairs } from './gameLogic';
+
 	let gameState = createInitialGameState();
+
 	function get_visual_state(position: number): VisualState {
 		if (gameState.cards[position].isMatched) return 'matched';
 		if (
@@ -26,15 +29,17 @@
 	}
 </script>
 
-<div class="grid grid-cols-4 gap-4">
-	{#each gameState.cards as card, i}
-		<div class="h-16 w-16">
-			<Card
-				card_front={card.card.image_path}
-				visualState={get_visual_state(i)}
-				position={i}
-				onCardClicked={cardClickHandler}
-			/>
-		</div>
-	{/each}
+<div>
+	<ResponsiveGrid num_items={gameState.cards.length}>
+		{#each gameState.cards as card, i}
+			<div class="aspect-w-4 aspect-h-4 w-full">
+				<Card
+					card_front={card.card.image_path}
+					visualState={get_visual_state(i)}
+					position={i}
+					onCardClicked={cardClickHandler}
+				/>
+			</div>
+		{/each}
+	</ResponsiveGrid>
 </div>

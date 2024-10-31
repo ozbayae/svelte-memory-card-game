@@ -19,12 +19,7 @@
 		position: number;
 		onCardClicked?: (e: CardClickedEvent) => void;
 	}
-	let {
-		card_front = '/src/lib/assets/card_images/1.png',
-		visualState = 'face-down',
-		position,
-		onCardClicked
-	}: Props = $props();
+	let { card_front, visualState = 'face-down', position, onCardClicked }: Props = $props();
 
 	const handleClick = () => {
 		onCardClicked?.({ position });
@@ -71,7 +66,7 @@
 	}
 </script>
 
-<button class={'card_container '} onclick={handleClick} bind:this={card_container}>
+<button class="card_container" onclick={handleClick} bind:this={card_container}>
 	<div class={'card ' + ' rounded-lg shadow-lg'} bind:this={card}>
 		<div class="card_front overflow-hidden rounded-lg">
 			<img src={card_front} alt="front" class="h-4/5 w-4/5" />
