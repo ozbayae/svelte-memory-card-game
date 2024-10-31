@@ -1,28 +1,28 @@
 interface Card {
-	id: number;
-	image_path: string;
+	readonly id: number;
+	readonly image_path: string;
 }
 
 const cards: Card[] = [
-	{ id: 1, image_path: '$lib/assets/card_images/1.png' },
-	{ id: 2, image_path: '$lib/assets/card_images/2.png' },
-	{ id: 3, image_path: '$lib/assets/card_images/3.png' },
-	{ id: 4, image_path: '$lib/assets/card_images/4.png' }
+	{ id: 1, image_path: '/src/lib/assets/card_images/1.png' },
+	{ id: 2, image_path: '/src/lib/assets/card_images/2.png' },
+	{ id: 3, image_path: '/src/lib/assets/card_images/3.png' },
+	{ id: 4, image_path: '/src/lib/assets/card_images/4.png' }
 ];
 
 interface CardInstance {
-	card: Card;
-	position: number;
-	isMatched: boolean;
+	readonly card: Card;
+	readonly position: number;
+	readonly isMatched: boolean;
 }
 
 interface GameState {
-	cards: CardInstance[];
-	turns: number;
-	matches: number;
-	isGameFinished: boolean;
-	first_choice_position: number | null;
-	second_choice_position: number | null;
+	readonly cards: CardInstance[];
+	readonly turns: number;
+	readonly matches: number;
+	readonly isGameFinished: boolean;
+	readonly first_choice_position: number | null;
+	readonly second_choice_position: number | null;
 }
 
 export function createInitialGameState(): GameState {
