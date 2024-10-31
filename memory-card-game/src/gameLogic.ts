@@ -3,6 +3,21 @@ interface Card {
 	readonly image_path: string;
 }
 
+interface CardInstance {
+	readonly card: Card;
+	readonly position: number;
+	readonly isMatched: boolean;
+}
+
+interface GameState {
+	readonly cards: CardInstance[];
+	readonly turns: number;
+	readonly matches: number;
+	readonly isGameFinished: boolean;
+	readonly first_choice_position: number | null;
+	readonly second_choice_position: number | null;
+}
+
 export const easy_card_set: Card[] = [
 	{ id: 1, image_path: '/src/lib/assets/card_images/1.png' },
 	{ id: 2, image_path: '/src/lib/assets/card_images/2.png' },
@@ -25,21 +40,6 @@ export const hard_card_set: Card[] = [
 	{ id: 11, image_path: '/src/lib/assets/card_images/11.png' },
 	{ id: 12, image_path: '/src/lib/assets/card_images/12.png' }
 ];
-
-interface CardInstance {
-	readonly card: Card;
-	readonly position: number;
-	readonly isMatched: boolean;
-}
-
-interface GameState {
-	readonly cards: CardInstance[];
-	readonly turns: number;
-	readonly matches: number;
-	readonly isGameFinished: boolean;
-	readonly first_choice_position: number | null;
-	readonly second_choice_position: number | null;
-}
 
 /**
  * Creates the initial game state for the memory card game.

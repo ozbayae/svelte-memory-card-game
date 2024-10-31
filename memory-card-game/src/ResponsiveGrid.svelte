@@ -64,6 +64,7 @@
 </script>
 
 <div class="flex h-screen w-screen items-center justify-center">
+	<!-- max screen width prevents pixelation of assets on very large screen and spacing looks nicer-->
 	<div
 		class="responsive-gap h-11/12 grid w-11/12 max-w-screen-2xl"
 		style={`grid-template-columns: repeat(${cols}, 1fr);`}

@@ -29,7 +29,7 @@
 	import Card from './Card.svelte';
 	import { fade } from 'svelte/transition';
 	import ResponsiveGrid from './ResponsiveGrid.svelte';
-	import type { VisualState } from './Card.svelte';
+	import type { VisualState, CardClickedEvent } from './Card.svelte';
 	import {
 		createInitialGameState,
 		pickCard,
@@ -53,8 +53,6 @@
 	}
 
 	async function cardClickHandler(e: CardClickedEvent) {
-		console.log(e);
-		const prev_matches = gameState.matches;
 		gameState = pickCard(gameState, e.position);
 		// Wait a little before checking pairs to allow the user to see the second card flipped
 		// Dirty workaround for now, should check if cards are done flipping
